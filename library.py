@@ -1,3 +1,62 @@
+#All the required libraries loaded
+#os library used ofr reading or writing files, creating and deleting directories or retrieving information about files.
+import os
+
+#Library importing inceptionV3 model and decode_predictions label.
+from keras.applications.inception_v3 import InceptionV3, decode_predictions
+
+#Library used to preprocess input data before feeding it to the InceptionV3 model
+from keras.applications.inception_v3 import preprocess_input
+
+#Library imports function Dense  used to define fully connected Neural Network
+#Library imports function GlobalAveragePooling2D used to reduce the spatial dimensions of a 3D tensor
+from keras.layers import Dense, GlobalAveragePooling2D
+
+#Library is used to load image module and manipulate image data in TensorFlow
+from tensorflow.keras.preprocessing import image
+
+from tensorflow.keras.preprocessing.image import load_img
+
+#Library imports function that is used to convert a PIL image to NumPy array
+from tensorflow.keras.preprocessing.image import img_to_array
+
+#Library used to import model class which is used to define a neural network model
+from tensorflow.keras import Model
+
+#Library used to import generator class which is used to generate batches of augmented image data for training deep learning models.
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+
+#Library used to work with arrays and matrices
+import numpy as np
+
+#Library used to import function train_test_split which is used to split a dataset into training and testing sets.
+from sklearn.model_selection import train_test_split
+
+#Library used to import function accuracy_score which is used to evaluate the accuracy of a classifier.
+from sklearn.metrics import accuracy_score
+
+#Library is used to load image module which is used for loading, manipulating and saving image files.
+from PIL import Image
+
+# This line imports specific functions from the scikit-learn library for computing evaluation metrics.
+from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score
+
+# This line imports the tifffile library for working with TIFF image files.
+import tifffile
+
+# This line imports the pyplot module from the matplotlib library for creating plots.
+import matplotlib.pyplot as plt
+
+
+#This line imports the albumentations module for augmenting the data
+import albumentations as A
+
+# This line imports the cv2 module from OpenCV library.
+import cv2
+
+
+
+
 def RGB_Image_To_Readable(folder_path_add,output_folder_add):
   # Folder path containing the TIFF files
   folder_path = "/content/drive/MyDrive/7. SaltMUAS_share/UAS Data Collection/North River/Orthos and DEMs 2022/21Jun2022/High/299x299 Mica tif Tiles"
