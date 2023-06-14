@@ -135,4 +135,30 @@ def test_augmentation(output_dir1_link,output_dir2_link,output_dir3_link):
   image_count = len([f for f in os.listdir(output_dir_other) if f.endswith('.tif')])
   print(f'Number of images in augmented folder: {image_count}')
 
+def extract_features(directory):
 
+    model = InceptionV3(weights='imagenet', pooling='avg', include_top=False)
+    feature_dict = {}
+
+    labels = os.listdir(directory)
+    print(labels)
+
+    for label in labels:
+        label_dir = os.path.join(directory, label)
+        tifs = [f for f in os.listdir(label_dir) if f.lower().endswith('.tif')]
+        n = len(tifs)
+
+        for i, f in enumerate(tifs):
+
+            print(f'working on {f}: {i} of {n}.')
+            image_path = os.path.join(label_dir, f)
+            img = cv2.imread(image_path, cv2.IMREAD_COLOR)
+            img = cv2.resize(img, inception_size)
+            x = np.array(img)
+            x = np.expand_dims(x, axis=0)
+            x = preprocess_input(x)
+            output = model.predict(x)
+            feat = output.flatten()
+            feature_dict[f] = [feat, label]
+
+    return feature_dict
