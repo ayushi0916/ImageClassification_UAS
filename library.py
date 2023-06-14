@@ -162,3 +162,22 @@ def extract_features(directory):
             feature_dict[f] = [feat, label]
 
     return feature_dict
+
+def image_feature_site(direc):
+   model = InceptionV3(weights='imagenet', pooling='avg', include_top=False)
+   feature_dict = {}
+   tifs = [f for f in os.listdir(direc) if f.lower().endswith('.tif')]
+   n = len(tifs)
+
+   for i, f in enumerate(tifs):
+      print(f'working on {f}: {i} of {n}.')
+      image_path = os.path.join(direc, f)
+      img = cv2.imread(image_path, cv2.IMREAD_COLOR)
+      img = cv2.resize(img, inception_size)
+      x = np.array(img)
+      x = np.expand_dims(x, axis=0)
+      x = preprocess_input(x)
+      output = model.predict(x)
+      feat = output.flatten()
+      feature_dict[f] = [feat, -1]
+   return feature_dict
