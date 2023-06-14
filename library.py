@@ -115,4 +115,24 @@ def Augment_data(input_folder_1_link,input_folder_2_link,input_folder_3_link,out
       cv2.imwrite(os.path.join(output_dir_other, str(i) + '_' + "vflip_" + image_file), image_3)
       cv2.imwrite(os.path.join(output_dir_other, str(i) + '_' + "hvflip_" + image_file), image_4)
       i = i + 1
+      
+      
+def test_augmentation(output_dir1_link,output_dir2_link,output_dir3_link): 
+  # Define the output directories
+  output_dir_regular = output_dir1_link
+  output_dir_irregular = output_dir2_link
+  output_dir_other = output_dir3_link
+
+
+  image_count = len([f for f in os.listdir(output_dir_regular) if f.endswith('.tif')])
+  print(f'Number of images in augmented folder: {image_count}')
+
+
+  image_count = len([f for f in os.listdir(output_dir_irregular) if f.endswith('.tif')])
+  print(f'Number of images in augmented folder: {image_count}')
+
+
+  image_count = len([f for f in os.listdir(output_dir_other) if f.endswith('.tif')])
+  print(f'Number of images in augmented folder: {image_count}')
+
 
