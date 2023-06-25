@@ -59,10 +59,10 @@ import cv2
 
 def RGB_Image_To_Readable(folder_path_add,output_folder_add):
   # Folder path containing the TIFF files
-  folder_path = "/content/drive/MyDrive/7. SaltMUAS_share/UAS Data Collection/North River/Orthos and DEMs 2022/21Jun2022/High/299x299 Mica tif Tiles"
+  folder_path = folder_path_add
 
   # Output folder for normalized images
-  output_folder = '/content/drive/MyDrive/RGB_21Jun_High_NOR'
+  output_folder = output_folder_add
 
   # Create the output folder if it doesn't exist
   os.makedirs(output_folder, exist_ok=True)
